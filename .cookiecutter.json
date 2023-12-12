@@ -1,0 +1,22 @@
+{
+  "_copy_without_render": [
+    "*.rst_t"
+  ],
+  "_jinja2_env_vars": {
+    "lstrip_blocks": true,
+    "trim_blocks": true
+  },
+  "_template": "https://github.com/statisticsnorway/ssb-pypitemplate.git",
+  "author": "Edvard Garmannslund",
+  "code_quality_level": "Medium",
+  "copyright_owner": "Statistics Norway",
+  "copyright_year": "2023",
+  "development_status": "Development Status :: 3 - Alpha",
+  "email": "ged@ssb.no",
+  "friendly_name": "SSB Hermes",
+  "github_organization": "statisticsnorway",
+  "license": "GPL-3.0",
+  "package_name": "ssb_hermes",
+  "project_name": "ssb-hermes",
+  "version": "0.0.0"
+}
