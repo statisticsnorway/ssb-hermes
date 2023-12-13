@@ -4,13 +4,7 @@ import os
 
 import pandas as pd
 
-notebook_path = os.getcwd()
-for folder_level in range(50):
-    if "pyproject.toml" in os.listdir():
-        break
-    os.chdir("../")
-
-from src.ssb_hermes._functions import _check_for_value
+from ssb_hermes._functions import _check_for_value
 
 data = pd.DataFrame({"col1": ["hei"]})
 
