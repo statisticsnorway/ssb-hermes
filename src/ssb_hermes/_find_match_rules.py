@@ -8,8 +8,8 @@ This python file contain the three functions for adress matching based on the th
 """Importing packages"""
 from typing import Any
 
-import pandas as pd
-from fuzzywuzzy import process
+import pandas as pd # type: ignore
+from fuzzywuzzy import process # type: ignore
 
 """Importing other internal functions"""
 from ._functions import _check_for_value

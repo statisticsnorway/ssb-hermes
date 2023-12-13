@@ -2,8 +2,8 @@
 from typing import Any
 from typing import Union
 
-import pandas as pd
-from fuzzywuzzy import process
+import pandas as pd # type: ignore
+from fuzzywuzzy import process # type: ignore
 
 
 def _add_row(

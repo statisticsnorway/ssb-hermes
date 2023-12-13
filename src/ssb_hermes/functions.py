@@ -8,7 +8,7 @@ https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
 import os
 from typing import Any
 
-import pandas as pd
+import pandas as pd # type: ignore
 
 """Importing other internal functions"""
 from ._find_match_rules import _find_match_rule1
