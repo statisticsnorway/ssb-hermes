@@ -1,4 +1,4 @@
-"""Internal functions for package ssb-hermes"""
+"""Internal functions for package ssb-hermes!"""
 
 import pandas as pd
 from fuzzywuzzy import process
@@ -151,6 +151,8 @@ def _set_score_cutoff(df_katalog_subset2: pd.DataFrame, column: str) -> int:
         score_cutoff = 0
     else:
         score_cutoff = 75
+        
+    return score_cutoff
 
 
 def _find_postnr_through_adress(

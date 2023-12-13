@@ -76,7 +76,7 @@ def find_match(
                         df_registry_subset, liste_data, postnr, columns
                     )
 
-                    if item != None:
+                    if item is not None:
                         postnr_registry = _get_value_from_df(
                             df_registry_subset, columns[1], columns[2], item
                         )

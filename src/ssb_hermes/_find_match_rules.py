@@ -1,4 +1,4 @@
-"""Function for each rule in adress matching function
+"""Function for each rule in adress matching function.
 
 This python file contain the three functions for adress matching based on the three rules:
     * Rule1: If there is only one unit at a location(postnr), then we use this unit.
@@ -44,7 +44,7 @@ def _find_match_rule2(query: str, choices: list, score_cutoff: int = 75) -> tupl
         item, match = process.extractOne(
             query=query, choices=choices, score_cutoff=score_cutoff
         )
-    except:
+    except (ValueError,AttributeError,TypeError):
         item = None
     finally:
         if item is None:
@@ -98,7 +98,7 @@ def _find_match_rule3(
                 df_registry_subset2, columns[1], adresse, score_cutoff=75
             )
 
-    if item != None:
+    if item is not None:
         rule = 3
 
     return item, rule
