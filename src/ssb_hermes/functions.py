@@ -144,30 +144,19 @@ def find_match(
                     )
 
                 else:
-                    if postnr_registry is not None:
-                        items.append(
-                            _add_row(
-                                columns,
-                                group,
-                                adresse,
-                                item,
-                                postnr_registry,
-                                postnr,
-                                rule,
-                            )
+                    # Store information about ident from data and registry as a dict to be made into a df.
+                    items.append(
+                        _add_row(
+                            columns,
+                            group,
+                            adresse,
+                            item,
+                            postnr_registry,
+                            postnr,
+                            rule,
                         )
-                    else:
-                        items.append(
-                            _add_row(
-                                columns,
-                                group,
-                                adresse,
-                                item,
-                                postnr_registry,
-                                postnr,
-                                rule,
-                            )
-                        )
+                    )
+
 
                 i += 1
 
