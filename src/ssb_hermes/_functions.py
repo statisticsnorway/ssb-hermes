@@ -166,7 +166,8 @@ def _find_postnr_through_adress(
         df_katalog_subset: Pandas dataframe containing the data.
         liste_data: List with values.
         postnr: String value with postnr.
-        columns: Tuple with column names.
+        column1: String with column name.
+        column2: String with column name.
 
     Returns:
         Any: String value.
