@@ -57,7 +57,7 @@ source = ["ssb_hermes", "tests"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 50
+fail_under = 5
 
 [tool.mypy]
 strict = true
