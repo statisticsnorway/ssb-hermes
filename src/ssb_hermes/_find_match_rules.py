@@ -44,7 +44,7 @@ def _find_match_rule2(query: str, choices: list, score_cutoff: int = 75) -> tupl
         item, match = process.extractOne(
             query=query, choices=choices, score_cutoff=score_cutoff
         )
-    except (ValueError,AttributeError,TypeError):
+    except (ValueError, AttributeError, TypeError):
         item = None
     finally:
         if item is None:

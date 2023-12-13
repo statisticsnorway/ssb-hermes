@@ -110,7 +110,7 @@ def _get_value_from_df(
         item: String value that we are filtering on.
 
     Returns:
-        value: String value.
+        value: String value or None
     """
     value = df[df[column1] == item].reset_index().at[0, column2]
     return value
@@ -133,8 +133,7 @@ def _create_list_df_unique_value(
     Returns:
         list_from_match: List with values.
     """
-    list_from_match = (df.loc[df[column_match] == value, column_list]).to_list()
-    return list_from_match
+    return (df.loc[df[column_match] == value, column_list]).to_list()
 
 
 def _set_score_cutoff(df_katalog_subset2: pd.DataFrame, column: str) -> int:
@@ -151,7 +150,7 @@ def _set_score_cutoff(df_katalog_subset2: pd.DataFrame, column: str) -> int:
         score_cutoff = 0
     else:
         score_cutoff = 75
-        
+
     return score_cutoff
 
 
