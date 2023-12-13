@@ -27,7 +27,7 @@ def find_match(
     *columns: str,
     registry_type_columns: str,
     find_postnr: bool = False,
-) -> tuple[dict,pd.DataFrame,pd.DataFrame]:
+) -> tuple[dict[Any, Any], Any, Any]:
     """Fuction for matching adresses from data to registry.
 
     Args:
@@ -155,7 +155,7 @@ def find_match(
     return items, cant_find_postnr, row_failed_no_adress
 
 
-def get_test_data() -> tuple[pd.DataFrame,pd.DataFrame]:
+def get_test_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     """Function for getting test data.
 
     Returns:
