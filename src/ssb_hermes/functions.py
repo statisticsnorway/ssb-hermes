@@ -27,7 +27,7 @@ def find_match(
     *columns: str,
     registry_type_columns: str,
     find_postnr: bool = False,
-) -> pd.DataFrame:
+) -> tuple:
     """Fuction for matching adresses from data to registry.
 
     Args:
@@ -38,7 +38,7 @@ def find_match(
         find_postnr: Boolean value. If True, the function will try to find the postnr through the adress. Default is False.
 
     Returns:
-        A dataframe containing the matched adresses.
+        tuple: A tuple containing rows to make the matched df from, filtered df with wrong postid, filtered df with fauilty adresses.
 
     Raises:
         ValueError: If the number of columns is not 5.
@@ -134,7 +134,6 @@ def find_match(
                             # Hvis adressen ikke finnes fortsetter vi paa neste adresse.
                             continue
 
-
                 # Store information about ident from data and registry as a dict to be made into a df.
                 items.append(
                     _add_row(
@@ -154,7 +153,7 @@ def find_match(
                     print(f"Vi har nådd nr {i} av {len(df_data)}")
 
     print(f"Ferdig å kjøre {i} enhteter, fant {len(items)} enheter.")
-    return items, cant_find_postnr, row_failed_no_adress, row_failed_adress_none
+    return items, cant_find_postnr, row_failed_no_adress
 
 
 def get_test_data():
@@ -168,48 +167,44 @@ def get_test_data():
     test_registry = os.path.join(data_folder, "test_data.csv")
 
     # Read the CSV file using Pandas and return the DataFrame
-    df1 = pd.read_csv(test_data, 
-                      header=0,
-                       names=
-                       [
-                            "ident_gruppe",
-                            "ident_type",
-                            "ident_adresse",
-                            "ident_postnr",
-                            "ident_kommunenr",
-                            "ident_fylkenr",
-                       ],
-                       dtype=
-                       {
-                            "ident_gruppe":str,
-                            "ident_type":str,
-                            "ident_adresse":str,
-                            "ident_postnr":str,
-                            "ident_kommunenr":str,
-                            "ident_fylkenr":str,
-                       }
-                       
-                      )
-    df2 = pd.read_csv(test_registry, 
-                      header=0,
-                       names=
-                       [
-                            "ident_gruppe",
-                            "ident_type",
-                            "ident_adresse",
-                            "ident_postnr",
-                            "ident_kommunenr",
-                            "ident_fylkenr",
-                       ],
-                       dtype=
-                       {
-                            "ident_gruppe":str,
-                            "ident_type":str,
-                            "ident_adresse":str,
-                            "ident_postnr":str,
-                            "ident_kommunenr":str,
-                            "ident_fylkenr":str,
-                       }
-                       
-                      )
+    df1 = pd.read_csv(
+        test_data,
+        header=0,
+        names=[
+            "ident_gruppe",
+            "ident_type",
+            "ident_adresse",
+            "ident_postnr",
+            "ident_kommunenr",
+            "ident_fylkenr",
+        ],
+        dtype={
+            "ident_gruppe": str,
+            "ident_type": str,
+            "ident_adresse": str,
+            "ident_postnr": str,
+            "ident_kommunenr": str,
+            "ident_fylkenr": str,
+        },
+    )
+    df2 = pd.read_csv(
+        test_registry,
+        header=0,
+        names=[
+            "ident_gruppe",
+            "ident_type",
+            "ident_adresse",
+            "ident_postnr",
+            "ident_kommunenr",
+            "ident_fylkenr",
+        ],
+        dtype={
+            "ident_gruppe": str,
+            "ident_type": str,
+            "ident_adresse": str,
+            "ident_postnr": str,
+            "ident_kommunenr": str,
+            "ident_fylkenr": str,
+        },
+    )
     return df1, df2
