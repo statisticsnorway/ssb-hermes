@@ -100,6 +100,7 @@ def find_match(
 
             # Itererer gjennom hver adresse vi får inn på gitt orgnr og postnummer
             for adresse in liste_data:
+                item = None
                 # Sjekker om det kun finnes en enhet på postnummeret i vof. Isåfall bruker jeg denne enheten
                 if len(liste_registry) == 1:
                     item, rule = _find_match_rule1(liste_registry)
@@ -130,33 +131,22 @@ def find_match(
                             row_failed_no_adress.append(
                                 df_data_subset[df_data_subset[columns[1]] == adresse]
                             )
-                if rule is None:
-                    row_failed_adress_none.append(
-                        _add_row(
-                            columns,
-                            group,
-                            adresse,
-                            item,
-                            postnr_registry,
-                            postnr,
-                            rule,
-                        )
-                    )
+                            # Hvis adressen ikke finnes fortsetter vi paa neste adresse.
+                            continue
 
-                else:
-                    # Store information about ident from data and registry as a dict to be made into a df.
-                    items.append(
-                        _add_row(
-                            columns,
-                            group,
-                            adresse,
-                            item,
-                            postnr_registry,
-                            postnr,
-                            rule,
-                        )
-                    )
 
+                # Store information about ident from data and registry as a dict to be made into a df.
+                items.append(
+                    _add_row(
+                        columns,
+                        group,
+                        adresse,
+                        item,
+                        postnr_registry,
+                        postnr,
+                        rule,
+                    )
+                )
 
                 i += 1
 
@@ -178,4 +168,48 @@ def get_test_data():
     test_registry = os.path.join(data_folder, "test_data.csv")
 
     # Read the CSV file using Pandas and return the DataFrame
-    return pd.read_csv(test_data), pd.read_csv(test_registry)
+    df1 = pd.read_csv(test_data, 
+                      header=0,
+                       names=
+                       [
+                            "ident_gruppe",
+                            "ident_type",
+                            "ident_adresse",
+                            "ident_postnr",
+                            "ident_kommunenr",
+                            "ident_fylkenr",
+                       ],
+                       dtype=
+                       {
+                            "ident_gruppe":str,
+                            "ident_type":str,
+                            "ident_adresse":str,
+                            "ident_postnr":str,
+                            "ident_kommunenr":str,
+                            "ident_fylkenr":str,
+                       }
+                       
+                      )
+    df2 = pd.read_csv(test_registry, 
+                      header=0,
+                       names=
+                       [
+                            "ident_gruppe",
+                            "ident_type",
+                            "ident_adresse",
+                            "ident_postnr",
+                            "ident_kommunenr",
+                            "ident_fylkenr",
+                       ],
+                       dtype=
+                       {
+                            "ident_gruppe":str,
+                            "ident_type":str,
+                            "ident_adresse":str,
+                            "ident_postnr":str,
+                            "ident_kommunenr":str,
+                            "ident_fylkenr":str,
+                       }
+                       
+                      )
+    return df1, df2
