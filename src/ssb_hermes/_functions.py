@@ -185,8 +185,6 @@ def _find_postnr_through_adress(
             break
     else:
         # Dersom vi når enden av adresene i ibk og ikke har en match, gir vi opp og går videre til neste postnr.
-        item = _find_closest_value(
-            df_katalog_subset, column2, postnr, score_cutoff=50
-        )
+        item = _find_closest_value(df_katalog_subset, column2, postnr, score_cutoff=50)
 
     return item
