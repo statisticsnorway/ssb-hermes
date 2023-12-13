@@ -73,7 +73,7 @@ def find_match(
             else:
                 if find_postnr is True:
                     item = _find_postnr_through_adress(
-                        df_registry_subset, liste_data, postnr, columns
+                        df_registry_subset, liste_data, postnr, columns[1], columns[2],
                     )
 
                     if item is not None:

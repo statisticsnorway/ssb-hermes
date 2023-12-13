@@ -1,5 +1,6 @@
 """Internal functions for package ssb-hermes!"""
-from typing import Union, Any
+from typing import Any
+from typing import Union
 
 import pandas as pd
 from fuzzywuzzy import process
@@ -119,7 +120,7 @@ def _create_list_df_unique_value(
     column_list: str,
     column_match: str,
     value: str,
-) -> list[str]:
+) -> Any:
     """Function to create list from df with unique values.
 
     Args:
@@ -129,7 +130,7 @@ def _create_list_df_unique_value(
         value: String value that we are filtering on.
 
     Returns:
-        list_from_match: List with values.
+        Any: List with values.
     """
     return (df.loc[df[column_match] == value, column_list]).to_list()
 
@@ -156,8 +157,9 @@ def _find_postnr_through_adress(
     df_katalog_subset: pd.DataFrame,
     liste_data: list[str],
     postnr: str,
-    columns: tuple[str],
-) -> str:
+    column1: str,
+    column2: str,
+) -> Any:
     """Function to find postnr through adress.
 
     Args:
@@ -167,13 +169,13 @@ def _find_postnr_through_adress(
         columns: Tuple with column names.
 
     Returns:
-        str: String value.
+        Any: String value.
     """
     item = None
 
     for adresse in liste_data:
         item, match = _find_closest_value(
-            df_katalog_subset, columns[1], adresse, score_cutoff=75
+            df_katalog_subset, column1, adresse, score_cutoff=75
         )
         if item is None:
             continue
@@ -184,7 +186,7 @@ def _find_postnr_through_adress(
     else:
         # Dersom vi når enden av adresene i ibk og ikke har en match, gir vi opp og går videre til neste postnr.
         item = _find_closest_value(
-            df_katalog_subset, columns[2], postnr, score_cutoff=50
+            df_katalog_subset, column2, postnr, score_cutoff=50
         )
 
     return item
