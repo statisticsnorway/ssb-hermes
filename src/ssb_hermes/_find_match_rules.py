@@ -29,7 +29,7 @@ def _find_match_rule1(list_with_one: list[str]) -> tuple[str,int]:
     return item, rule
 
 
-def _find_match_rule2(query: str, choices: list[str], score_cutoff: int = 75) -> tuple[str,int]:
+def _find_match_rule2(query: str, choices: list[str], score_cutoff: int = 75) -> tuple[Any, int | None]:
     """Function for rule 2 in adress matching function. If there are multiple units we use fuzzywuzzy with 75% match.
 
     Args:
@@ -60,7 +60,7 @@ def _find_match_rule3(
     postnr: str,
     adresse: str,
     columns: tuple[str,str,str,str,str],
-) -> tuple[str,int]:
+) -> tuple[Any, int | None]:
     """Function for rule 3 in adress matching function. If rule 1 and 2 did not work, we iterate up geographically.
 
     Args:
