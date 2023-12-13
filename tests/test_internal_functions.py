@@ -1,4 +1,4 @@
-"""Script for å test funksjoner i data kategorien for transaksjonsdata"""
+"""Script for å test funksjoner i data kategorien for transaksjonsdata!"""
 
 import os
 
@@ -16,4 +16,4 @@ data = pd.DataFrame({"col1": ["hei"]})
 
 
 def test__check_for_value():
-    assert _check_for_value(data, "col1", "hei") == True
+    assert _check_for_value(data, "col1", "hei") is True
