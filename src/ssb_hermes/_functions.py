@@ -1,5 +1,5 @@
 """Internal functions for package ssb-hermes!"""
-from typing import Union
+from typing import Union, Any
 
 import pandas as pd
 from fuzzywuzzy import process
@@ -34,7 +34,7 @@ def _find_closest_value(
     column: str,
     value: str,
     score_cutoff: int = 40,
-) -> any:
+) -> Any:
     """Function to find closest value in column of df.
 
     Args:
@@ -44,7 +44,7 @@ def _find_closest_value(
         score_cutoff: Score cutoff. Defaults to 40.
 
     Returns:
-        any: String with matching item or None.
+        Any: String with matching item or None.
     """
     choices = df[column].to_list()
     # Har satt cutoff 40 prosent siden det er for gjort å ha 50 % feil med fire siffer
@@ -98,7 +98,7 @@ def _get_value_from_df(
     column1: str,
     column2: str,
     item: str,
-) -> any:
+) -> Any:
     """Function to get value from df.
 
     Args:
@@ -108,7 +108,7 @@ def _get_value_from_df(
         item: String value that we are filtering on.
 
     Returns:
-        any: String value or None
+        Any: String value or None
     """
     item_from_df = df[df[column1] == item].reset_index().at[0, column2]
     return item_from_df
