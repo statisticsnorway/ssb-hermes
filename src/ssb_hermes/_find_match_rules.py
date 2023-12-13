@@ -6,6 +6,7 @@ This python file contain the three functions for adress matching based on the th
     * Rule3: If rule 1 and 2 did not work, we iterate up geographically.
 """
 """Importing packages"""
+from typing import Any
 import pandas as pd
 from fuzzywuzzy import process
 
