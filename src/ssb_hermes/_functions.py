@@ -7,7 +7,7 @@ from fuzzywuzzy import process
 
 def _add_row(
     columns: tuple[str, str, str, str, str],
-    *args: str,
+    *args: Union[str, str, str, str, str, int],
 ) -> dict[str, Union[str, str, str, str, str, int]]:
     """Function to add row to dataframe.
 
@@ -16,7 +16,7 @@ def _add_row(
         *args: Tuple with values.
 
     Returns:
-        Dict: Dictionary with values.
+        dict: Dictionary with values.
     """
     item = {
         columns[0]: args[0],
@@ -34,7 +34,7 @@ def _find_closest_value(
     column: str,
     value: str,
     score_cutoff: int = 40,
-) -> str:
+) -> any:
     """Function to find closest value in column of df.
 
     Args:
@@ -44,14 +44,13 @@ def _find_closest_value(
         score_cutoff: Score cutoff. Defaults to 40.
 
     Returns:
-        str: String with matching item.
+        any: String with matching item or None.
     """
     choices = df[column].to_list()
     # Har satt cutoff 40 prosent siden det er for gjort å ha 50 % feil med fire siffer
     item = process.extractOne(query=value, choices=choices, score_cutoff=score_cutoff)
 
-    if item is not None:
-        return item[0]
+    return item[0]
 
 
 def _check_for_value(
@@ -99,7 +98,7 @@ def _get_value_from_df(
     column1: str,
     column2: str,
     item: str,
-) -> str:
+) -> any:
     """Function to get value from df.
 
     Args:
@@ -109,7 +108,7 @@ def _get_value_from_df(
         item: String value that we are filtering on.
 
     Returns:
-        str: String value or None
+        any: String value or None
     """
     item_from_df = df[df[column1] == item].reset_index().at[0, column2]
     return item_from_df
