@@ -1,7 +1,5 @@
 """Script for å test funksjoner i data kategorien for transaksjonsdata!"""
 
-import os
-
 import pandas as pd
 
 from ssb_hermes._functions import _check_for_value
