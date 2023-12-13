@@ -85,7 +85,7 @@ def _find_match_rule3(
         df_registry_subset2 = df_registry_subset.loc[
             df_registry_subset[columns[3]] == kommunenr
         ]
-        item, match = _find_closest_value(
+        item = _find_closest_value(
             df_registry_subset2, columns[1], adresse, score_cutoff=75
         )
 
@@ -94,7 +94,7 @@ def _find_match_rule3(
             df_registry_subset2 = df_registry_subset.loc[
                 df_registry_subset[columns[4]] == fylkenr
             ]
-            item, match = _find_closest_value(
+            item = _find_closest_value(
                 df_registry_subset2, columns[1], adresse, score_cutoff=75
             )
 

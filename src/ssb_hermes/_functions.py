@@ -1,13 +1,13 @@
 """Internal functions for package ssb-hermes!"""
-
+from typing import Dict, Union
 import pandas as pd
 from fuzzywuzzy import process
 
 
 def _add_row(
-    columns: tuple,
+    columns: tuple[str,str,str,str,str],
     *args: str,
-) -> dict:
+) -> Dict[str,Union[str,str,str,str,str,int]]:
     """Function to add row to dataframe.
 
     Args:
@@ -15,7 +15,7 @@ def _add_row(
         *args: Tuple with values.
 
     Returns:
-        dict: Dictionary with values.
+        Dict: Dictionary with values.
     """
     item = {
         columns[0]: args[0],
@@ -33,7 +33,7 @@ def _find_closest_value(
     column: str,
     value: str,
     score_cutoff: int = 40,
-) -> tuple:
+) -> str:
     """Function to find closest value in column of df.
 
     Args:
@@ -43,16 +43,14 @@ def _find_closest_value(
         score_cutoff: Score cutoff. Defaults to 40.
 
     Returns:
-        tuple: Tuple with value and score.
+        str: String with matching item.
     """
     choices = df[column].to_list()
     # Har satt cutoff 40 prosent siden det er for gjort å ha 50 % feil med fire siffer
     item = process.extractOne(query=value, choices=choices, score_cutoff=score_cutoff)
 
-    if item is None:
-        return None, None
-    else:
-        return item[0], item[1]
+    if item is not None:
+        return item[0]
 
 
 def _check_for_value(
@@ -110,10 +108,10 @@ def _get_value_from_df(
         item: String value that we are filtering on.
 
     Returns:
-        value: String value or None
+        str: String value or None
     """
-    value = df[df[column1] == item].reset_index().at[0, column2]
-    return value
+    item_from_df = df[df[column1] == item].reset_index().at[0, column2]
+    return item_from_df
 
 
 def _create_list_df_unique_value(
@@ -121,7 +119,7 @@ def _create_list_df_unique_value(
     column_list: str,
     column_match: str,
     value: str,
-) -> list:
+) -> list[str]:
     """Function to create list from df with unique values.
 
     Args:
@@ -144,7 +142,7 @@ def _set_score_cutoff(df_katalog_subset2: pd.DataFrame, column: str) -> int:
         column: String value with name of column in which to look.
 
     Returns:
-        score_cutoff: Integer value.
+        int: Integer value.
     """
     if _check_all_values_equal(df_katalog_subset2, column):
         score_cutoff = 0
@@ -156,9 +154,9 @@ def _set_score_cutoff(df_katalog_subset2: pd.DataFrame, column: str) -> int:
 
 def _find_postnr_through_adress(
     df_katalog_subset: pd.DataFrame,
-    liste_data: list,
+    liste_data: list[str],
     postnr: str,
-    columns: tuple,
+    columns: tuple[str],
 ) -> str:
     """Function to find postnr through adress.
 
@@ -169,7 +167,7 @@ def _find_postnr_through_adress(
         columns: Tuple with column names.
 
     Returns:
-        item: String value.
+        str: String value.
     """
     item = None
 
@@ -185,7 +183,7 @@ def _find_postnr_through_adress(
             break
     else:
         # Dersom vi når enden av adresene i ibk og ikke har en match, gir vi opp og går videre til neste postnr.
-        item, match = _find_closest_value(
+        item = _find_closest_value(
             df_katalog_subset, columns[2], postnr, score_cutoff=50
         )
 
