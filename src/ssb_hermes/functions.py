@@ -27,7 +27,7 @@ def find_match(
     *columns: str,
     registry_type_columns: str,
     find_postnr: bool = False,
-) -> tuple:
+) -> tuple[dict,pd.DataFrame,pd.DataFrame]:
     """Fuction for matching adresses from data to registry.
 
     Args:
@@ -50,7 +50,6 @@ def find_match(
     items = []
     cant_find_postnr = []
     row_failed_no_adress = []
-    row_failed_adress_none = []
 
     for group in df_data[columns[0]].unique():
         # Subsetter ut gjeldende foretak fra vof og data inn
@@ -156,11 +155,11 @@ def find_match(
     return items, cant_find_postnr, row_failed_no_adress
 
 
-def get_test_data():
+def get_test_data() -> tuple[pd.DataFrame,pd.DataFrame]:
     """Function for getting test data.
 
     Returns:
-        Two dataframes containing test data.
+        tuple:Two dataframes containing test data.
     """
     data_folder = os.path.join(os.path.dirname(__file__), "example_data")
     test_data = os.path.join(data_folder, "test_data.csv")
