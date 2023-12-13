@@ -1,13 +1,14 @@
 """Internal functions for package ssb-hermes!"""
-from typing import Dict, Union
+from typing import Union
+
 import pandas as pd
 from fuzzywuzzy import process
 
 
 def _add_row(
-    columns: tuple[str,str,str,str,str],
+    columns: tuple[str, str, str, str, str],
     *args: str,
-) -> Dict[str,Union[str,str,str,str,str,int]]:
+) -> dict[str, Union[str, str, str, str, str, int]]:
     """Function to add row to dataframe.
 
     Args:
