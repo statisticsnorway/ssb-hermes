@@ -5,9 +5,8 @@ https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
 
 """
 """Importing packages"""
-from typing import Any
-
 import os
+from typing import Any
 
 import pandas as pd
 
@@ -29,7 +28,7 @@ def find_match(
     *columns: str,
     registry_type_columns: str,
     find_postnr: bool = False,
-) -> tuple[dict[Any, Any], Any, Any]:
+) -> tuple[Any, Any, Any]:
     """Fuction for matching adresses from data to registry.
 
     Args:
