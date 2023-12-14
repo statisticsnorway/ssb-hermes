@@ -160,7 +160,7 @@ def _set_score_cutoff(df_katalog_subset2: pd.DataFrame, column: str) -> int:
 
 
 def _find_postnr_through_adress(
-    df_katalog_subset: pd.DataFrame,
+    df_registry_subset: pd.DataFrame,
     liste_data: list[str],
     postnr: str,
     column1: str,
@@ -169,7 +169,7 @@ def _find_postnr_through_adress(
     """Function to find postnr through adress.
 
     Args:
-        df_katalog_subset: Pandas dataframe containing the data.
+        df_registry_subset: Pandas dataframe containing the data.
         liste_data: List with values.
         postnr: String value with postnr.
         column1: String with column name.
@@ -181,15 +181,18 @@ def _find_postnr_through_adress(
     item = None
 
     for adresse in liste_data:
-        item = _find_closest_value(df_katalog_subset, column1, adresse, score_cutoff=75)
+        item = _find_closest_value(
+            df_registry_subset, column1, adresse, score_cutoff=75
+        )
         if item is None:
             continue
 
         else:
+            item = _get_value_from_df(df_registry_subset, column1, column2, item)
             # Om det finnes en match. Da stopper vi loopen og lager en liste med matchen.
             break
     else:
         # Dersom vi når enden av adresene i ibk og ikke har en match, gir vi opp og går videre til neste postnr.
-        item = _find_closest_value(df_katalog_subset, column2, postnr, score_cutoff=50)
+        item = _find_closest_value(df_registry_subset, column2, postnr, score_cutoff=50)
 
     return item

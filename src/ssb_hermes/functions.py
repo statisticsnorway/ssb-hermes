@@ -19,7 +19,6 @@ from ._functions import _check_all_values_equal
 from ._functions import _check_for_value
 from ._functions import _create_list_df_unique_value
 from ._functions import _find_postnr_through_adress
-from ._functions import _get_value_from_df
 
 
 def find_match(
@@ -83,9 +82,7 @@ def find_match(
                     )
 
                     if item is not None:
-                        postnr_registry = _get_value_from_df(
-                            df_registry_subset, columns[1], columns[2], item
-                        )
+                        postnr_registry = item
                     else:
                         cant_find_postnr.append(
                             df_data_subset[df_data_subset[columns[1]] == postnr]
