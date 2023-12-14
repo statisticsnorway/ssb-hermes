@@ -19,7 +19,6 @@ from ._functions import _check_all_values_equal
 from ._functions import _check_for_value
 from ._functions import _create_list_df_unique_value
 from ._functions import _find_postnr_through_adress
-from ._functions import _get_value_from_df
 
 
 def find_match(
