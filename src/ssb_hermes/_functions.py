@@ -186,6 +186,9 @@ def _find_postnr_through_adress(
             continue
 
         else:
+            item = _get_value_from_df(
+                df_registry_subset, column1, column2, item
+            )
             # Om det finnes en match. Da stopper vi loopen og lager en liste med matchen.
             break
     else:
