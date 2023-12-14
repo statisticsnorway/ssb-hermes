@@ -114,8 +114,11 @@ def _get_value_from_df(
     Returns:
         Any: String value or None
     """
-    item_from_df = df[df[column1] == item].reset_index().at[0, column2]
-    return item_from_df
+    filtered_rows = df[df[column1] == item]
+
+    # Retrieve values from a specific column in the filtered rows
+    values_from_filtered_rows = filtered_rows[column2].unique()[0]
+    return values_from_filtered_rows
 
 
 def _create_list_df_unique_value(
