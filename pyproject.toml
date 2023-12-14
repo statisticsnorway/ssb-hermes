@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ssb-hermes"
-version = "0.0.1"
+version = "0.0.2"
 description = "SSB Hermes"
 authors = ["Edvard Garmannslund <ged@ssb.no>"]
 license = "GPL-3.0"
