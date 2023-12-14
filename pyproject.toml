@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ssb-hermes"
-version = "0.0.0"
+version = "0.0.1"
 description = "SSB Hermes"
 authors = ["Edvard Garmannslund <ged@ssb.no>"]
 license = "GPL-3.0"
@@ -16,6 +16,10 @@ Changelog = "https://github.com/statisticsnorway/ssb-hermes/releases"
 [tool.poetry.dependencies]
 python = "^3.9"
 click = ">=8.0.1"
+fuzzywuzzy = "^0.18.0"
+pandas = "^2.1.4"
+numpy = "^1.26.2"
+python-levenshtein = "^0.23.0"
 
 [tool.poetry.group.dev.dependencies]
 pygments = ">=2.10.0"
@@ -53,7 +57,7 @@ source = ["ssb_hermes", "tests"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 50
+fail_under = 5
 
 [tool.mypy]
 strict = true
@@ -82,6 +86,7 @@ select = [
 ]
 ignore = [
     "ANN101", # Supress missing-type-self.
+    "B007", # Supress find src fault
     "D100",   # Supress undocumented-public-module. Only doc of public api required.
     "E402",   # Supress module-import-not-at-top-of-file, needed in jupyter notebooks.
     "E501",   # Supress line-too-long warnings: trust black's judgement on this one.

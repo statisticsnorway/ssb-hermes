@@ -1,0 +1,21 @@
+ident_gruppe,ident_adresse,ident_postnr,ident_kommunenr,ident_fylkenr,ident_type
+egon,Sognsveien 77c,0855,01,03,resturant
+egon,Vitaminveien 9-11,0485,01,03,resturant
+egon,Karl Johans gate 37,0162,01,03,resturant
+egon,Jernbanetorget 6,0154,01,03,resturant
+egon,Ekebergveien 228 B,1162,01,03,head_office
+egon,Vetrlidsallmenningen 2,5014,01,46,resturant
+egon,Myrdalsvegen 2,5130,01,46,resturant
+egon,Torgallmenningen 11,5014,01,46,resturant
+egon,Sartorvegen 12,5353,26,46,resturant
+egon,Laguneveien 1,5239,01,46,resturant
+peppes,JERNBANETORGET 1,0154,01,03,pizza_place
+peppes,KARL JOHANS GATE 1,0154,01,03,pizza_place
+peppes,STORTINGSGATEN 4,0158,01,03,pizza_place
+peppes,NYDALSVEIEN 36,0484,01,03,pizza_place
+peppes,KARENSLYST ALLÉ 18,0278,01,03,pizza_place
+peppes,OLAV KYRRESGATE 11,5003,01,46,pizza_place
+peppes,FJØSANGERVEIEN 30,5054,01,46,pizza_place
+peppes,KAIEN,5203,24,46,pizza_place
+peppes,VANGSGATA 46,5700,21,46,pizza_place
+peppes,Hamnegata 4,5411,14,46,pizza_place
