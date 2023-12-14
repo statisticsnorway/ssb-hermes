@@ -50,9 +50,11 @@ def _find_closest_value(
     choices = df[column].to_list()
     # Har satt cutoff 40 prosent siden det er for gjort å ha 50 % feil med fire siffer
     item = process.extractOne(query=value, choices=choices, score_cutoff=score_cutoff)
-
-    return item[0]
-
+    
+    if item is None:
+        return None
+    else:
+        return item[0]
 
 def _check_for_value(
     df: pd.DataFrame,
