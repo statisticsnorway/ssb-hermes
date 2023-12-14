@@ -181,7 +181,9 @@ def _find_postnr_through_adress(
     item = None
 
     for adresse in liste_data:
-        item = _find_closest_value(df_registry_subset, column1, adresse, score_cutoff=75)
+        item = _find_closest_value(
+            df_registry_subset, column1, adresse, score_cutoff=75
+        )
         if item is None:
             continue
 
