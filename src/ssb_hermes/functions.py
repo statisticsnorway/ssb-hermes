@@ -138,8 +138,8 @@ def find_match(
                         group,
                         adresse,
                         item,
-                        postnr_registry,
                         postnr,
+                        postnr_registry,
                         rule,
                     )
                 )

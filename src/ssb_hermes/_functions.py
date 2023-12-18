@@ -8,8 +8,8 @@ from fuzzywuzzy import process  # type: ignore
 
 def _add_row(
     columns: tuple[str, str, str, str, str],
-    *args: Union[str, str, str, Any, str, int],
-) -> dict[str, Union[str, str, str, Any, str, int]]:
+    *args: Union[str, str, str, Any, Any, int],
+) -> dict[str, Union[str, str, str, Any, Any, int]]:
     """Function to add row to dataframe.
 
     Args:
