@@ -8,13 +8,9 @@ This python file contain the three functions for adress matching based on the th
 """Importing packages"""
 from typing import Any
 
-import pandas as pd  # type: ignore
 from fuzzywuzzy import process  # type: ignore
 
 """Importing other internal functions"""
-from ._functions import _check_for_value
-from ._functions import _find_closest_value
-from ._functions import _get_value_from_df
 
 
 def _find_match_one_posible(list_with_one: list[str]) -> tuple[str, int]:
@@ -30,9 +26,7 @@ def _find_match_one_posible(list_with_one: list[str]) -> tuple[str, int]:
     return item
 
 
-def _find_match_fuzzy(
-    query: str, choices: list[str], score_cutoff: int = 75
-) -> Any:
+def _find_match_fuzzy(query: str, choices: list[str], score_cutoff: int = 75) -> Any:
     """Function for rule 2 in adress matching function. If there are multiple units we use fuzzywuzzy with 75% match.
 
     Args:

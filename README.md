@@ -27,11 +27,13 @@
 
 ## Features
 
-- TODO
+Tool to match adress columns betwen to sources of data. Uses adresses and other geoprahical information like zip code. Enables you to use fuzzywuzzy on two datasets to match idents on street adress.
 
 ## Requirements
 
-- TODO
+- pandas
+- fuzzywuzzy
+- levensthein
 
 ## Installation
 
