@@ -13,14 +13,14 @@ from fuzzywuzzy import process  # type: ignore
 """Importing other internal functions"""
 
 
-def _find_match_one_posible(list_with_one: list[str]) -> tuple[str, int]:
+def _find_match_one_posible(list_with_one: list[str]) -> Any:
     """Function for rule 1 in adress matching function. If there is only one unit at a location(postnr), then we use this unit.
 
     Args:
         list_with_one: List with one unit at a location(postnr).
 
     Returns:
-        tuple: item, rule
+        Any: item
     """
     item = list_with_one[0]
     return item
@@ -35,7 +35,7 @@ def _find_match_fuzzy(query: str, choices: list[str], score_cutoff: int = 75) ->
         score_cutoff: The score to beat in order to be considered a match.
 
     Returns:
-        tuple: item
+        Any: item
     """
     try:
         item, match = process.extractOne(

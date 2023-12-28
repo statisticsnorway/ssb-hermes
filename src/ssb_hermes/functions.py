@@ -147,31 +147,39 @@ def find_match(
                 item = None
                 # Checking if there is only one unit in the postnr in the registry. If so, using this unit.
                 if len(list_postnr) == 1:
-                    item = _find_match_one_posible(list_postnr)
+                    item = _find_match_one_posible(list_with_one=list_postnr)
                     rule = 1
                 # If there are more than one unit in the postnr, using fuzzywuzzy to match them.
                 # We check on each geographical level from lowest to highest.
                 if item is None:
                     item = _find_match_fuzzy(
-                        adresse, list_postnr, score_cutoff=score_cutoff
+                        query=adresse,
+                        choices=list_postnr,
+                        score_cutoff=score_cutoff,
                     )
                     rule = 2
 
                 if item is None:
                     item = _find_match_fuzzy(
-                        adresse, list_kommune, score_cutoff=score_cutoff
+                        query=adresse,
+                        choices=list_kommune,
+                        score_cutoff=score_cutoff,
                     )
                     rule = 3
 
                 if item is None:
                     item = _find_match_fuzzy(
-                        adresse, list_fylke, score_cutoff=score_cutoff
+                        query=adresse,
+                        choices=list_fylke,
+                        score_cutoff=score_cutoff,
                     )
                     rule = 4
 
                 if item is None:
                     item = _find_match_fuzzy(
-                        adresse, list_country, score_cutoff=score_cutoff
+                        query=adresse,
+                        choices=list_country,
+                        score_cutoff=score_cutoff,
                     )
                     rule = 5
 
@@ -183,7 +191,9 @@ def find_match(
                     ):
                         score_cutoff = 0
                         item = _find_match_fuzzy(
-                            list_country, score_cutoff=score_cutoff
+                            query=adresse,
+                            choices=list_country,
+                            score_cutoff=score_cutoff,
                         )
                         rule = 6
 
