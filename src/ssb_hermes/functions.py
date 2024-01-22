@@ -15,6 +15,7 @@ from ._find_match_rules import _find_match_fuzzy
 from ._find_match_rules import _find_match_one_posible
 from ._functions import _add_row
 from ._functions import _check_all_values_equal
+from ._functions import _set_score_cutoff
 
 
 def get_test_data() -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -111,10 +112,8 @@ def find_match(
         list_country = df_registry_subset[columns[1]].tolist()
 
         # Setting score_cutoff for fuzzywuzzy
-        if _check_all_values_equal(df_registry_subset, registry_type_columns):
-            score_cutoff = 50
-        else:
-            score_cutoff = 75
+        score_cutoff = _set_score_cutoff(df_registry_subset, registry_type_columns)
+
 
         # Iterating through each postnr
         for postnr in df_data_subset[columns[2]].unique():

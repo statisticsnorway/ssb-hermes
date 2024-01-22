@@ -152,7 +152,7 @@ def _set_score_cutoff(df_katalog_subset2: pd.DataFrame, column: str) -> int:
         int: Integer value.
     """
     if _check_all_values_equal(df_katalog_subset2, column):
-        score_cutoff = 0
+        score_cutoff = 50
     else:
         score_cutoff = 75
 
