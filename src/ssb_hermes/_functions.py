@@ -1,6 +1,6 @@
 """Internal functions for package ssb-hermes!"""
+
 from typing import Any
-from typing import Union
 
 import pandas as pd  # type: ignore
 from fuzzywuzzy import process  # type: ignore
@@ -8,8 +8,8 @@ from fuzzywuzzy import process  # type: ignore
 
 def _add_row(
     columns: tuple[str, str, str, str, str],
-    *args: Union[str, str, str, Any, str, int],
-) -> dict[str, Union[str, str, str, Any, str, int]]:
+    *args: str | str | str | Any | str | int,
+) -> dict[str, str | str | str | Any | str | int]:
     """Function to add row to dataframe.
 
     Args:
