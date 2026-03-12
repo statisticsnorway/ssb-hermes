@@ -102,7 +102,7 @@ def find_match(
                 # Sjekker om det kun finnes en enhet på postnummeret i vof. Isåfall bruker jeg denne enheten
                 if len(liste_registry) == 1:
                     item, rule = _find_match_rule1(liste_registry)
-                # Om det fins flere enheter på samme postnr bruker jeg fuzzywuzzy for å matche dem.
+                # Om det fins flere enheter på samme postnr bruker jeg thefuzz for å matche dem.
                 else:
                     if _check_all_values_equal(
                         df_registry_subset, registry_type_columns
