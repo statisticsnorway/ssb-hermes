@@ -16,10 +16,10 @@ Changelog = "https://github.com/statisticsnorway/ssb-hermes/releases"
 [tool.poetry.dependencies]
 python = "^3.10"
 click = ">=8.0.1"
-fuzzywuzzy = "^0.18.0"
 pandas = "^2.1.4"
 numpy = "^1.26.2"
-python-levenshtein = "^0.23.0"
+thefuzz = "^0.22.1"
+ipykernel = "^7.2.0"
 
 [tool.poetry.group.dev.dependencies]
 pygments = ">=2.10.0"

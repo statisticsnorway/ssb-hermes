@@ -2,7 +2,7 @@
 
 This python file contain the three functions for adress matching based on the three rules:
     * Rule1: If there is only one unit at a location(postnr), then we use this unit.
-    * Rule2: If there are multiple units we use fuzzywuzzy with 75% match.
+    * Rule2: If there are multiple units we use thefuzz with 75% match.
     * Rule3: If rule 1 and 2 did not work, we iterate up geographically.
 """
 
@@ -10,7 +10,7 @@ This python file contain the three functions for adress matching based on the th
 from typing import Any
 
 import pandas as pd  # type: ignore
-from fuzzywuzzy import process  # type: ignore
+from thefuzz import process  # type: ignore
 
 """Importing other internal functions"""
 from ._functions import _check_for_value
@@ -46,7 +46,7 @@ def _find_match_rule2(
         tuple: item, rule
     """
     try:
-        item, match = process.extractOne(
+        item, _match = process.extractOne(
             query=query, choices=choices, score_cutoff=score_cutoff
         )
     except (ValueError, AttributeError, TypeError):
